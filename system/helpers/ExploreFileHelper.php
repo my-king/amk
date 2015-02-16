@@ -57,14 +57,13 @@ class ExploreFileHelper {
         }
 
         // lista os arquivos se houverem
-        if (count($arquivos) != 0) {
+        if (isset($arquivos[0])) {
             foreach ($arquivos as $key => $value) {
                 $arquivos[$key] = substr($value, 0, -4);
             }
-            return $arquivos;
-        } else {
-            return false;
         }
+        
+        return $arquivos;
     }
 
     public static function criarArquivo($alias, $conteudo, $modo = "w+") {
@@ -74,19 +73,23 @@ class ExploreFileHelper {
         fclose($fp);
         unset($conteudo);
     }
-    
-    public static function mountArrayFilePagination(Array $arrayFiles,$inicio,$total){
-        
-        $t = 0;
+
+    public static function mountArrayFilePagination(Array $arrayFiles, $inicio, $total) {
+
         $arquivos = array();
-        foreach ($arrayFiles as $key => $file) {
-            if($key >= $inicio && $t < $total){
-                $arquivos[] = $file;
-                $t++;
+        if (isset($arrayFiles[0])) {
+            $t = 0;
+            foreach ($arrayFiles as $key => $file) {
+                if ($key >= $inicio && $t < $total) {
+                    $arquivos[] = $file;
+                    $t++;
+                }
+                if ($t === $total) {
+                    break;
+                }
             }
-            if($t === $total) {break;}
         }
-        
+
         return $arquivos;
     }
 

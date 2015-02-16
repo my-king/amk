@@ -39,10 +39,10 @@ class ExploreLogic {
         $listArquivos = ExploreFileHelper::listarArquivos(
                         SecurityHelper::getInstancia()->getSistema()->getVEntity(), $search
         );
+        
         $arrayList = ExploreFileHelper::mountArrayFilePagination(
                         $listArquivos, $params['iDisplayStart'], $params['iDisplayLength']
         );
-
         /* Total de registros */
         $iTotal = count($listArquivos);
 
