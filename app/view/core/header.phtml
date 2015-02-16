@@ -1,0 +1,65 @@
+<div class="navigation-bar fixed-top dark">
+
+    <div class="navigation-bar-content container">
+        <span class="element-divider"></span>
+        <div class="element">
+            <a class="text-normal fg-white" href="index.php?Principal">
+                <span class="icon-grid" style="margin-right: 7px;"></span>
+                <?php echo NAME_SIS; ?>
+            </a>
+        </div>
+        <span class="element-divider"></span>
+
+        <a class="element1 pull-menu" href="#"></a>
+        <ul class="element-menu">
+            <li>
+                <a class="dropdown-toggle" href="#">Cadastro ( Entity )</a>
+                <ul class="dropdown-menu" data-role="dropdown">
+                    <li class="disabled" ><a style="color: black;font-weight: bold;">:: Local ::</a></li>
+                    <li><a href="index.php?Entity/cadastrar">Entity -> Cadastrar</a></li>
+                    <li><a href="index.php?VEntity/cadastrar">VEntity -> Cadastrar</a></li>
+                    <li class="disabled" ><a style="color: black;font-weight: bold;">:: Database ::</a></li>
+                    <li><a href="index.php?Entity/cadastrarEntityFromDatabase">Entity -> Cadastrar</a></li>
+                    <li><a href="index.php?VEntity/cadastrarVEntityFromDatabase">VEntity -> Cadastrar</a></li>
+                </ul>
+            </li>
+			
+            <li>
+                <a class="dropdown-toggle" href="#">Template</a>
+                <ul class="dropdown-menu" data-role="dropdown">
+                    <li class="disabled" ><a style="color: black;font-weight: bold;">:: Nome Template ::</a></li>
+                    <li><a href="#">Gerar Formulario</a></li>
+                </ul>
+            </li>
+			
+            <li class="no-desktop">
+                <a href="index.php?Security/deslogar"><span class="icon-exit"> SAIR</span></a>   
+            </li>
+        </ul>
+
+        <div class="no-tablet-portrait no-phone">
+
+            <span class="element-divider place-right"></span>
+            <a class="element place-right" href="<?php echo UrlRequestHelper::mountUrlGet('Security', 'deslogar'); ?>"><span class="icon-exit"> SAIR</span></a>
+
+            <span class="element-divider place-right"></span>
+            <div class="element place-right">
+                <a class="dropdown-toggle"  href="#">
+                    <span class="icon-cog"></span>
+                </a>
+                <ul class="dropdown-menu place-right" data-role="dropdown">
+                    <li class="divider"></li>
+                    <li class="disabled" ><a style="color: black;font-weight: bold;">:: SISTEMAS ::</a></li>
+                    <li class="divider"></li>
+                    <?php foreach (DatabaseLogic::listPermitSistema() as $objSistema): ?>
+                    <?php $href = (SecurityHelper::getInstancia()->getSistema()->getNome() !== $objSistema->nome) ? 'href="'.UrlRequestHelper::mountUrlPost('Security','logar',array('sistema' => $objSistema->id)).'" ' : 'style="background: black;color: white;" '; ?>
+                    <li><a <?php echo $href; unset($href); ?>><?php echo $objSistema->nome; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <span class="element-divider place-right"></span>
+
+        </div>
+
+    </div>
+</div>

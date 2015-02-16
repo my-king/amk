@@ -1,0 +1,86 @@
+<style>
+    #oculto-menu{
+        position:fixed;
+        right:0;
+        height: 100%;
+        width: 20px;
+        z-index: 999;
+    }
+
+    #menu-over{
+        position:fixed;
+        right:0;
+        /*background:#000;*/
+        height: 100%;
+        width: 110px;
+        filter:alpha(opacity=30, finishopacity=30, style=1); 
+        opacity:.8;
+        -khtml-opacity:.3; 
+        border:none; 
+        z-index: 990;
+    }
+
+    #menu-over #container{
+        /*margin: 30px 0px 0px 0px;*/
+        padding: 10px;
+    }
+</style>    
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        //Ocultar o toogle no carregamento da página
+        $("#menu-over").width("10px");
+        //Exibir o conteúdo quando clicar sobre o H2
+        $("#menu-over").hover(function() {
+            $(this).stop(true, false).animate({width: "110px"}, 500);
+            $(this).css("background", '#000');
+        }, function() {
+            $(this).stop(true, false).animate({width: "10px"}, 1000, function() {
+                $(this).css("background", 'none');
+            });
+        });
+    });
+</script>
+
+<div id="menu-over" style="">
+    <div id="container">
+        <a href="index.php?Colaborador/informar/id/<?php echo $this->SECURITY->getUsuario()->getId(); ?>">
+            <button class="shortcut fg-white" style="background: none;">
+                <i class="icon-cabinet fg-white"></i>
+                Meus Dados
+            </button>
+        </a> 
+
+        <a href="index.php?Usuario/alterarAvatar">
+            <button class="shortcut fg-white" style="background: none;">
+                <i class="icon-camera"></i>
+                Alterar Foto
+            </button>
+        </a>
+
+        <a href="index.php?Usuario/alterarSenha">
+            <button class="shortcut fg-white" style="background: none;">
+                <i class="icon-key-2"></i>
+                Alterar Senha
+            </button>
+        </a>
+
+        <button class="shortcut fg-white" style="background: none; ">
+            <i class="icon-cog"></i>
+            Configurações
+        </button>
+
+        <button class="shortcut fg-white" style="background: none; ">
+            <i class="icon-mail fg-white"></i>
+            Mensagens
+            <small class="bg-red fg-white">10</small>
+        </button>
+
+        <a href="index.php?Security/deslogar" style="position:absolute; bottom: 10px;">
+            <button class="shortcut fg-white" style="background: none;">
+                <i class="icon-exit fg-orange"></i>
+                Sair
+            </button>
+        </a>
+    </div>
+</div>

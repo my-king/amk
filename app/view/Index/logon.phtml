@@ -1,0 +1,75 @@
+<style>
+    body{
+        text-align:center; /* hack para o IE */
+        background-image: url("<?php echo PATH_DIR_TEMPLATE_URL; ?>images/background/binary-code-2.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%; /* A imagem ocupar todo o viewport */
+    }
+
+    /* Inicio - Login */
+    .box_login {
+        text-align: left;
+        width:302px;
+        height:370px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin-top:-185px;
+        margin-left:-151px;
+    }
+
+    .box_login h1,.box_login h2,.box_login h4 {
+        color: #ffffff;
+    }
+
+    .metro .box_login a{
+        float: right;
+        padding: 11px 0;
+        color: #ADD8E6;
+    }
+    .metro .box_login a:hover{
+        color: white;
+    }
+
+    /* Fim - Login */
+</style>
+<div class="box_login">
+
+    <!-- Layout s/ imagem -->
+    <h1><?php echo NAME_SIS; ?></h1>
+    <h4><?php echo DESCRICAO_SIS; ?></h4>
+
+    <!-- Layout com imagem -->
+<!--    <div style="text-align: center"><img src="<?php // echo PATH_IMAGE_URL;  ?>logo.png"/></div>-->
+
+
+    <form name="fLogin" id="fLogin" action="<?php echo UrlRequestHelper::mountUrlPost('Security','logar'); ?>" method="post" style="margin-top: 20px;">
+
+        <div style="width: 300px;">
+
+            <h2>Sistema</h2>
+            <div class="input-control select">
+                <select name="sistema" id="sistema" required="">
+                    <option value="" selected="selected"></option>
+                    <?php echo $view_listSistemas; ?>
+                </select>
+            </div>
+            <br/>
+            <div style="margin-top: 20px;">
+                <button class="large primary" style="float: right;">
+                    <i class="icon-enter on-left"></i>
+                    Acessar
+                </button>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<div id="inf_rodape" style="position: absolute;bottom: 0;color: white;">
+    <small>MyKing - Framework de desenvolvimento em PHP :: Versão <?php echo VERSAO; ?></small>
+</div>
+

@@ -1,0 +1,198 @@
+/* Tamanho do contaner */
+.container {
+    width: 1000px !important;
+}
+
+/* Limpar float */
+.clear{
+    clear: both;
+}
+
+/* Inicio - Login */
+.box_login {
+    text-align: left;
+    width:302px;
+    height:370px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-185px;
+    margin-left:-151px;
+}
+
+.box_login h1,.box_login h2,.box_login h4 {
+    color: #ffffff;
+}
+
+.metro .box_login a{
+    float: right;
+    padding: 11px 0;
+}
+.metro .box_login a:hover{
+    color: white;
+}
+/* Fim - Login */
+
+
+/** Houver da imagem da foto quando passa o mouse**/
+.metro .tile-area .user-id:hover {
+    background-color: #4285F4;
+}
+
+/** Houver do nome do sistema **/
+.title-hover:hover {
+    color: #4285F4 !important;
+}
+
+label.error{color: red;}
+
+.metro .tabela {
+    padding: 20px 40px 20px 60px;
+    border: 1px #ccc solid;
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #fdfdfd !important;
+    min-height: 100px;
+}
+
+
+.metro .page {
+    min-height: 93%;
+}
+
+/* Inicio - Customização do toolbar */
+.metro .shortcut {
+    background-color: #FFFFFF;
+}
+.metro .shortcut:hover {
+    border-color: #4285F4;
+}
+.metro .shortcut:active {
+    background-color: white !important;
+}
+
+.toolbar_title{
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom:20px;
+}
+
+.metro .toolbar button.bt-frame:last-child {
+    margin-top: 10px;
+}
+
+/* Fim- Customização do toobar */
+
+/* Botão do form */
+.metro .on-left {
+    margin-right: 7px;
+}
+
+/* INICIO - Alinhar botões de submit dos formularios a direita */
+.right-botton-submit{
+    float: right;
+}
+
+.right-botton-submit:after{
+    clear: both;
+}
+/* FIM - Alinhar botões de submit dos formularios a direita */
+
+/*Altera borda dos flames*/
+.metro .tab-control .frames {
+    border: 1px solid #DFDFDF;
+}
+
+/*cor da aba ativa do frame*/
+.metro .tab-control .tabs > li.active a {
+    border-top: 2px solid #1BA1E2;
+}
+
+
+/* button start */
+
+#ini-start{
+    background-color: red;
+}
+
+#ini-start:hover #start{
+    opacity: 1; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease;
+}
+
+#start{
+    width: 120px; 
+    opacity: 0; -webkit-transition: all 1s ease; 
+    -moz-transition: all 1s ease; 
+    -o-transition: all 1s ease; 
+    transition: all 1s ease;
+    margin: 5px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+/* button start */
+
+
+/* Inicio - customização do notify */
+.metro.notify-container {
+    top: 45px;
+}
+/* Fim - customização do notify */
+
+/* Inicio - Cor do button quando estar ativo */
+.metro button:active {
+    background-color: #2E92CF !important;
+}
+/* Fim - Cor do button quando estar ativo */
+
+/* Customizar select2 */
+ul.select2-results {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* LAYOUT COM IMAGEM NO MENU */
+/*.metro .navigation-bar, .metro .navbar {
+    background: url("../images/menu.png");
+    background-size: 100% 100%;
+}*/
+
+/*.metro .navigation-bar .navigation-bar-content .element,
+.metro .navbar .navigation-bar-content .element,
+.metro .navigation-bar .navbar-content .element,
+.metro .navbar .navbar-content .element {
+    background-color: #000;
+    opacity:.8;
+}*/
+
+/* FIM DO LAYOUT COM IMAGEM NO MENU */
+/*
+.metro .navigation-bar .navigation-bar-content .element:hover,
+.metro .navbar .navigation-bar-content .element:hover,
+.metro .navigation-bar .navbar-content .element:hover,
+.metro .navbar .navbar-content .element:hover {
+    background-color: #4285F4;
+}*/
+
+/* Inicio - Cor da paginacao da tabela*/ 
+.metro .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #4285F4;
+}
+/* Fim - Cor da paginacao da tabela */
+
+
+/* Inicio - Cor da breadcrumbs*/ 
+.metro .breadcrumbs ul a {
+    color:#4285F4;
+}
+
+.metro .breadcrumbs ul a:hover {
+    background: #4285F4;
+}
+.metro .breadcrumbs ul a:hover:before {
+    border-color: #4285F4 #4285F4 #4285F4 transparent;
+}
+.metro .breadcrumbs ul a:hover:after {
+    border-left-color: #4285F4;
+}
+/* Fim - Cor da breadcrumbs */

@@ -1,0 +1,17 @@
+<h1>
+    <a href="index.php?Index/logon"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
+    Error<small class="on-right">( Acesso Negado )</small>
+</h1>
+
+<div class="grid fluid">
+    <div class="row">
+        <div class="span2">
+            <img src="<?php echo PATH_IMAGE_URL; ?>Ignore-Shield-128.png"/>
+        </div>
+        <div class="span10">
+            <h2>A Requisição da página <strong><?php echo $view_pagina; ?></strong> do módulo <strong><?php echo $view_modulo; ?></strong> não foi permitida pelo sistema.</h2>
+            <p>Contate o administrador caso deseje verificar alguma irregularidade.</p>
+            <a href="index.php?Index/logon" class="button large primary">Retorne para o login</a>            
+        </div>
+    </div>
+</div>

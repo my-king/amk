@@ -1,0 +1,58 @@
+<!--titulo da pagina-->
+<h1>
+    <a href="javascript:history.go(-1)"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
+    VEntity<small class="on-right">Cadastro ( sync database )</small>
+</h1>
+
+<div class="notice bg-grayLighter">
+    <p>Obrigatorio o preenchimento de todos os campos com "<b class="fg-red">*</b>".</p>
+</div>
+<br />
+
+<form name="fConexao" id="fConexao" action="index.php?VEntity/cadastrarVEntityFromDatabase" method="post">
+
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Propriedades da Conexão</h2></div>
+        </div>
+        <div class="row">
+            <div class="span3">
+                <h2>DAL</h2>
+                <div class="input-control select" data-role="input-control">
+                    <select name="dal" id="dal" required="" >
+                        <?php echo $view_listOptionDal; ?>
+                    </select>
+                </div>                
+            </div>
+            <div class="span3">
+                <h2>Schema</h2>
+                <div class="input-control select" data-role="input-control">
+                    <select name="schema" id="schema" required="" >
+                        <option></option>
+                    </select>
+                </div>                
+            </div>
+            <div class="span3">
+                <h2>Tabela</h2>
+                <div class="input-control select" data-role="input-control">
+                    <select name="table" id="table" required="" >
+                        <option></option>
+                    </select>
+                </div>                
+            </div>
+            <div class="span3">
+                <h2>ID</h2>
+                <div class="input-control select" data-role="input-control">
+                    <select name="id" id="identificador" required="" >
+                        <option></option>
+                    </select>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div class="toolbar right-botton-submit">
+        <button class="large primary"  id="sycl"><i class="icon-loading-2 on-left"></i>Carregar</button>
+    </div>
+
+</form>

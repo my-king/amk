@@ -1,0 +1,53 @@
+<br />
+<div class="tab-control" data-role="tab-control">
+
+    <ul class="tabs">
+        <li <?php echo $view_frameActive->active('frameC'); ?>><a href="#frameC">Colmaps</a></li>
+    </ul>
+
+    <div class="frames">
+
+        <div <?php echo $view_frameActive->frameActive('frameC'); ?> id="frameC">
+
+            <div id='isColmap' >
+                <div class="grid fluid">
+                    <div class="row toolbar_title">
+                        <div class="span12"><h2 class="subheader-secondary">Lista de colmaps não vinculada ao VEntity</h2></div>
+                    </div>
+                </div>
+
+                <table class="table striped hovered dataTable" id="listColmaps">
+
+                    <thead>
+                        <tr>
+                            <th class="text-left span8">Colmaps</th>
+                            <th class="text-left span2">Selecione</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <th class="text-left span12" colspan="2">
+                                <div class="toolbar right-botton-submit">
+                                    <button class="large primary"  id="adicionar"><i class="icon-plus on-left"></i>Adicionar</button>
+                                </div>                                
+                            </th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+                
+            </div>
+
+            <div class="notice bg-amber" id='amberColmap'>
+                <div class="fg-white">
+                    <h3>Não existe colmaps desvinculada ao VEntity.</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

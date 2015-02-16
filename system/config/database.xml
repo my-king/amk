@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<basexml>
+    <sistema name='AMK' repositorio='amk' >
+        <path>/var/www/amk/</path>
+    </sistema>
+</basexml>

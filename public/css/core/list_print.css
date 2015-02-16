@@ -1,0 +1,40 @@
+table{
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+td{
+    padding: 3px;
+}
+
+.titulo,.titulo1,.titulo2{
+    background-color: #00688B;
+    text-align: center;
+    height: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    /*font-family: Arial;*/
+}
+
+.titulo2{
+    text-align: center;
+    height: 20px;
+    font-size: 13px;
+    color: black;
+    font-weight: normal;
+}
+
+.titulo{
+    background-color: white;
+    color: black;
+}
+
+.color1{
+    background-color: white;
+}
+
+.color2{
+    background-color: #E8E8E8;
+}
+

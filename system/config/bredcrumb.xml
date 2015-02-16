@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<bredcrumb>
+    
+    <home module='Principal' action='index' />
+    
+    <module name='Colaborador'> <!-- <module name='Colaborador' main='index' parentName="Seguranca">  -->
+        <action name='listar' />
+        <action name='informar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='editar'>
+            <crumb name='listar' action='listar' />
+            <crumb name='informar' action='informar'>
+                <params name='id' param='id' />
+            </crumb>
+        </action>
+        <action name='cadastrar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='resgatar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+    </module>
+    
+    <module name='Entidade' > <!-- <module name='Entidade' main='index'>  -->
+        <action name='listar'/>
+        <action name='informar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='resgatar'>
+            <crumb name='Listar' />
+            <crumb name='Informar' action='informar' />
+        </action>
+    </module>
+    
+    <module name='Usuario' > <!-- <module name='Entidade' main='index'>  -->
+        <action name='listar' />
+        <action name='cadastrar' >
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='resgatar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='informar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+    </module>
+    
+    <module name='Perfil' > <!-- <module name='Entidade' main='index'>  -->
+        <action name='listar' />
+        <action name='resgatar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+        <action name='informar'>
+            <crumb name='Listar' action='listar' />
+        </action>
+    </module>
+    
+</bredcrumb>

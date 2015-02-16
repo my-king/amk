@@ -1,0 +1,106 @@
+<h1>
+    <?php echo SecurityHelper::getInstancia()->getSistema()->getNome(); ?><small class="on-right">Informações</small>
+</h1>
+
+<div class="tab-control" data-role="tab-control">
+
+    <ul class="tabs">
+        <li <?php echo $view_frameActive->active('frameE'); ?> ><a href="#frameE">Entity</a></li>
+        <li <?php echo $view_frameActive->active('frameVE'); ?> ><a href="#frameVE">VEntity</a></li>
+        <li <?php echo $view_frameActive->active('frameD'); ?> ><a href="#frameD">Dao</a></li>
+        <li <?php echo $view_frameActive->active('frameL'); ?> ><a href="#frameL">Logic</a></li>
+    </ul>
+
+    <div class="frames">
+
+        <div <?php echo $view_frameActive->frameActive('frameE'); ?> id="frameE">
+
+            <table class="table striped hovered dataTable" id="listEntity">
+
+                <thead>
+                    <tr>
+                        <th class="text-left">Entity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th class="text-left">Entity</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+        
+        <div <?php echo $view_frameActive->frameActive('frameVE'); ?> id="frameVE">
+
+            <table class="table striped hovered dataTable" id="listVEntity">
+
+                <thead>
+                    <tr>
+                        <th class="text-left">VEntity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th class="text-left">VEntity</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+        </div>
+
+        <div <?php echo $view_frameActive->frameActive('frameD'); ?> id="frameD">
+            <table class="table striped hovered dataTable" id="listDao">
+
+                <thead>
+                    <tr>
+                        <th class="text-left">Dao</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th class="text-left">Dao</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+        
+        <div <?php echo $view_frameActive->frameActive('frameL'); ?> id="frameL">
+            <table class="table striped hovered dataTable" id="listLogic">
+
+                <thead>
+                    <tr>
+                        <th class="text-left">Logic</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th class="text-left">Logic</th>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+        
+    </div> 
+    
+</div>

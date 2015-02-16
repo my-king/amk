@@ -1,0 +1,63 @@
+div{
+    margin-bottom: 20px;
+}
+
+table{
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td{
+    padding: 5px;
+    border: 1px solid #00688B;
+}
+
+th{
+    padding: 5px;
+    border: 1px solid #00688B;
+}
+
+.titulo1,titulo2,titulo3{
+    background-color: #00688B;
+    text-align: center;
+    height: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.titulo2{
+    text-align: left;
+    height: 20px;
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.titulo3{
+    text-align: left;
+    height: 20px;
+    font-size: 13px;
+    color: black;
+    font-weight: normal;
+}
+
+.color1{
+    background-color: white;
+}
+
+.color2{
+    background-color: #E8E8E8;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+

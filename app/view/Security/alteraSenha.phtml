@@ -1,0 +1,62 @@
+<!--titulo da pagina-->
+<h1>
+    <a href="index.php?Index/logon"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
+    Usuário<small class="on-right">Alterar Senha</small>
+</h1>
+
+<div class="grid fluid">
+
+    <?php if ($view_tentativas > 0): ?>
+        <div class="row">
+            <div class="span12">
+                <div class="notice bg-amber">
+                    <div class="fg-white">
+                        <h2>Senha de autenticação incorreta, em mais [ <?php echo 3 - $view_tentativas; ?> ] tentativa(s), sua senha irá expirar.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="row">
+        
+        <div class="span6">
+            <form name="fCadastro" id="fCadastro" action="index.php?Security/salvarSenha" method="post">
+
+                <input type="hidden" name="token" id="token" value="<?php echo $view_token; ?>" />
+
+                <h2>Senha de Autenticação</h2>
+                <div class="input-control text">
+                    <input type="password" name="senhaAutenticacao" id="senhaAutenticacao" minlength="8" maxlength="8" required=""/>
+                </div>
+
+                <h2>Nova Senha</h2>
+                <div class="input-control text">
+                    <input type="password" name="senha" class="password" id="des_senha_new" minlength="8" maxlength="18" required="" />
+                </div>
+
+                <h2>Confirme Nova Senha</h2>
+                <div class="input-control text">
+                    <input type="password" name="des_senha_conf" id="des_senha_conf" minlength="8" maxlength="18" required="" />
+                </div>
+
+                <div class="toolbar">
+                    <button class="large primary" name="alterar_senha" style="float: right;"><i class="icon-floppy on-left"></i>Salvar</button>
+                </div>
+
+            </form>
+        </div>
+        
+        <div class="span6">
+            <div class="notice bg-grayLighter">
+                <h4 class="subheader-secondary">Dicas para construção de uma senha segura.</h4>
+                <div class="fg-red">
+                    <p>- *Utilize no minimo 8 caracteres.</p>
+                    <p>- *Utilize no maximo 18 caracteres.</p>
+                    <p>- Utilize números, caracteres especiais, letras maiúsculas e minúsculas.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

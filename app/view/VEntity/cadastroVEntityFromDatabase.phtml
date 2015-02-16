@@ -1,0 +1,263 @@
+<div class="grid fluid" style="position: fixed; top: 6%; left: 90%;">
+    <div class="row">
+        <div class="span12">
+            <ul style="position: relative; width: 120px; z-index: 1;min-width: 120px;" class="dropdown-menu open keep-open">
+                <li class="menu-title"><i class="icon-loading-2"></i> Sincronizar</li>
+                <li><a id="syncAtributos" style="padding: 10px 18px !important;" class="fg-lightBlue">Atributos</a></li>
+                <li class="menu-title"><i class="icon-plus"></i> Adicionar</li>
+                <li><a onclick="adicionarOneToMany()" style="padding: 10px 18px !important;" class="fg-lightBlue">OneToMany</a></li>
+                <li><a onclick="adicionarManyToMany()" style="padding: 10px 18px !important;" class="fg-lightBlue">ManyToMany</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--titulo da pagina-->
+<h1>
+    <a href="javascript:history.go(-1)"><i class="icon-arrow-left-3 fg-darker smaller"></i></a>
+    VEntity<small class="on-right">Cadastrar</small>
+</h1>
+
+<div class="notice bg-grayLighter">
+    <p>Obrigatorio o preenchimento de todos os campos com "<b class="fg-red">*</b>".</p>
+</div>
+<br />
+
+<form name="fCadastrar" id="fCadastrar" action="<?php echo UrlRequestHelper::mountUrlPost('VEntity', 'cadastrar'); ?>" method="post">
+
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Gerar estrutura(s)</h2></div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="input-control checkbox size2" data-role="input-control" >
+                    <label>
+                        <input name="VEntity" value='YES' type="checkbox" data-show="intermediate" checked />
+                        <span class="check"></span>
+                        VEntity
+                    </label>
+                </div>
+
+                <div class="input-control checkbox size2" data-role="input-control">
+                    <label>
+                        <input name="VDao" value='YES' type="checkbox" />
+                        <span class="check"></span>
+                        VDao
+                    </label>
+                </div>
+
+                <div class="input-control checkbox size2" data-role="input-control">
+                    <label>
+                        <input name="VLogic" value='YES' type="checkbox"/>
+                        <span class="check"></span>
+                        VLogic
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Class ( Nome ) *</h2></div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="input-control text" data-role="input-control">
+                    <input type="text" name="objeto" id="objeto" minlength="3" maxlength="40" required="" placeholder="Digite o nome do objeto" />
+                    <button class="btn-clear" tabindex="-1" type="button"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Conexão</h2></div>
+            <input type="hidden" name="dal" id="dal" value="<?php echo $view_dados['dal']; ?>" />
+        </div>
+        <div class="row">
+            <div class="span6">
+                <h2>Schema</h2>
+                <div class="input-control text" data-role="input-control">
+                    <input type="hidden" name="schema" id='schema' value="<?php echo $view_dados['schema']; ?>" />
+                    <input type="text" name="vschema" id="vschema" value="<?php echo $view_dados['schema']; ?>" disabled="" />
+                    <button class="btn-clear" tabindex="-1" type="button"></button>
+                </div>                
+            </div>
+            <div class="span6">
+                <h2>Tabela <b class="fg-red">*</b></h2>
+                <div class="input-control text" data-role="input-control">
+                    <input type="hidden" name="table" id='table' value="<?php echo $view_dados['table']; ?>" />
+                    <input type="text" name="vtable" id="vtable" value="<?php echo $view_dados['table']; ?>" disabled=""/>
+                    <button class="btn-clear" tabindex="-1" type="button"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Temp HTML -->
+    <div style="display: none;" id="tmp_html"></div>
+
+    <!-- INICIO - ATRIBUTOS -->
+
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Propriedades ( Atributos )</h2></div>
+        </div>
+    </div>
+
+    <div id="listAtributos">
+
+        <div class="grid fluid tAtributos" style="padding: 10px;background: #F0EEEE; border: 1px solid #E0DDDD;" id="div_atributo_0">
+
+            <div class="row">
+                <div class="span4">
+                    <h2>Atributo <b class="fg-red">*</b></h2>
+                    <div class="input-control text" data-role="input-control">
+                        <input type="hidden" name="dados[0][atributo]" value="id" />
+                        <input type="text" value="id" disabled=""/>
+                        <button class="btn-clear" tabindex="-1" type="button"></button>
+                    </div>
+                </div>
+                <div class="span4">
+                    <h2>Colmap <b class="fg-red">*</b></h2>
+                    <div class="input-control text" data-role="input-control">
+                        <input class="colmaps" type="hidden" name="dados[0][colmap]" value="<?php echo $view_dados['id']; ?>" id="colmap_0"/>
+                        <input type="text" name="idReferencia" id="idReferencia" value="<?php echo $view_dados['id']; ?>" disabled="" />
+                        <button class="btn-clear" tabindex="-1" type="button"></button>
+                    </div>
+                </div>
+                <div class="span4">
+                    <h2>OneToOne ( Objeto )</h2>
+                    <div class="input-control select">
+                        <select name="dados[0][OneToOne]" id="OneToOne_0" disabled="" >
+                            <?php echo $view_reflection->selectObjectEntity(); ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <h2>Type <b class="fg-red">*</b></h2>
+                    <div class="input-control select">
+                        <select name="dados[0][type]" id="type_0" required="">
+                            <?php echo $view_reflection->selectType(); ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="span6">
+                    <h2>Mask</h2>
+                    <div class="input-control select">
+                        <select name="dados[0][mask]" id="mask_0">
+                            <?php echo $view_reflection->selectMask(); ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php if (isset($view_colmaps[0])): ?>
+            <?php $key = 1; ?>
+            <?php foreach ($view_colmaps as $objColmap): ?>
+                <div class="grid fluid tAtributos" style="padding: 10px;background: #F0EEEE; border: 1px solid #E0DDDD;" id="div_atributo_<?php echo $key; ?>">
+
+                    <div class="row">
+                        <div class="span12">
+                            <div class="toolbar transparent link place-right">
+                                <a><button class="bt-frame fg-red deleteButton" style="margin-top: -20px;" onclick="deleteAtributo('<?php echo $key; ?>')"><i class="icon-cancel"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span4">
+                            <h2>Atributo <b class="fg-red">*</b></h2>
+                            <div class="input-control text" data-role="input-control">
+                                <input type="text" name="dados[<?php echo $key; ?>][atributo]" id="atributo_<?php echo $key; ?>" placeholder="Nome do Atributo" required=""/>
+                                <button class="btn-clear" tabindex="-1" type="button"></button>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <h2>Colmap <b class="fg-red">*</b></h2>
+                            <div class="input-control text" data-role="input-control">
+                                <input class="colmaps" type="hidden" name="dados[<?php echo $key; ?>][colmap]" id="colmap_<?php echo $key; ?>" value="<?php echo $objColmap->colmap; ?>" required=""/>
+                                <input type="text" name="vcolmap_<?php echo $key; ?>" id="vcolmap_<?php echo $key; ?>" value="<?php echo $objColmap->colmap; ?>" disabled=""/>
+                                <button class="btn-clear" tabindex="-1" type="button"></button>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <h2>OneToOne ( Objeto )</h2>
+                            <div class="input-control select">
+                                <select name="dados[<?php echo $key; ?>][OneToOne]" id="OneToOne_<?php echo $key; ?>" >
+                                    <?php echo $view_reflection->selectObjectEntity(); ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span6">
+                            <h2>Type <b class="fg-red">*</b></h2>
+                            <div class="input-control select">
+                                <select name="dados[<?php echo $key; ?>][type]" id="type_<?php echo $key; ?>" required="">
+                                    <?php echo $view_reflection->selectType($objColmap->type); ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <h2>Mask</h2>
+                            <div class="input-control select">
+                                <select name="dados[<?php echo $key; ?>][mask]" id="mask_<?php echo $key; ?>">
+                                    <?php echo $view_reflection->selectMask(); ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php $key++; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+    </div>
+    <!-- FIM - ATRIBUTOS -->
+
+    <!-- INICIO - ManyToOne -->
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Relacionamento ( OneToMany )</h2></div>
+        </div>
+    </div>
+
+    <div id="listOneToMany">
+        <div class="notice bg-amber" id='noticeOneToMany'>
+            <div class="fg-white">
+                <h2>Não existe relacionamentos do tipo OneToMany.</h2>
+            </div>
+        </div>
+    </div>
+    <!-- FIM - ManyToOne -->
+
+
+    <!-- INICIO - ManyToMany -->
+    <div class="grid fluid">
+        <div class="row toolbar_title">
+            <div class="span12"><h2 class="subheader-secondary fg-red" style="font-weight: bold;">Relacionamento ( ManyToMany )</h2></div>
+        </div>
+    </div>
+
+    <div id="listManyToMany">
+        <div class="notice bg-amber" id='noticeManyToMany'>
+            <div class="fg-white">
+                <h2>Não existe relacionamentos do tipo ManyToMany.</h2>
+            </div>
+        </div><br />
+    </div>
+    <!-- FIM - ManyToMany -->
+
+
+    <div class="toolbar right-botton-submit">
+        <button class="large primary"  id="salvar"><i class="icon-floppy on-left"></i>Salvar</button>
+    </div>
+
+</form>
