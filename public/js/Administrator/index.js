@@ -21,7 +21,13 @@ function excluirProjeto(name) {
         var result = AjaxPost({objeto: "Database", method: "ExcluirSistemaFromDatabase", name: name});
         if (result === 1) {
             alert('Projeto removido com sucesso');
-            $("#ref_" + name).remove();
+            var n = $( ".listProjetos tr" ).length;
+            if(n === 1){
+                location.reload(true);
+            }else{
+                $("#ref_" + name).remove();
+            }
+            
         } else {
             alert('Error ao tentar excluir o Projeto');
         }

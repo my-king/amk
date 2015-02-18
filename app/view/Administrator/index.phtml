@@ -20,9 +20,29 @@
 
 <!-- Begin page content -->
 <div class="container">
+
     <div class="page-header">
         <h1>Área Administrativa</h1>
     </div>
+
+    <?php if (SessionHelper::getSession('cad_sucesso')): ?>
+        <?php SessionHelper::deleteSession('cad_sucesso'); ?>
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+            <span class="sr-only">Sucesso:</span>
+            Projeto cadastrado com sucesso.
+        </div>
+    <?php endif; ?>
+
+    <?php if (SessionHelper::getSession('cad_error')): ?>
+        <?php SessionHelper::deleteSession('cad_error'); ?>
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Projeto já existe ou dados invalidos, tente novamente.
+        </div>
+    <?php endif; ?>
+
     <p class="lead">Adicione <code>Projetos</code> ao <code>AMK</code> para serem gerenciados.</p>
 
     <form class="form-inline" id="cadSistema" role="form" action="<?php echo UrlRequestHelper::mountUrlPost('Database', 'salvar'); ?>" method="post">
@@ -54,7 +74,7 @@
                     <th>Excluir</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="listProjetos">
                 <?php foreach ($view_database as $sistema): ?>
                     <tr id="ref_<?php echo $sistema->attributes()->name; ?>">
                         <td><?php echo $sistema->attributes()->name; ?></td>
