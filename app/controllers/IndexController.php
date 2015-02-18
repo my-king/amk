@@ -7,6 +7,11 @@ class IndexController extends TMetroUI {
     }
 
     public function logon() {
+        
+        if(!DatabaseLogic::isDatabase()){
+            RedirectorHelper::goToController('Administrator');
+        }
+        
         # Adicionar titulo a pagina
         $this->HTML->setTitle("Login");
 

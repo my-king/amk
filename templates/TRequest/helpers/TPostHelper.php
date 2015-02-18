@@ -70,7 +70,7 @@ class TPostHelper {
             $arrayQueryString = explode('/', $queryString);
             $objFuncionalidade = new stdClass();
             $objFuncionalidade->modulo = $arrayQueryString[0];
-            $objFuncionalidade->page = $arrayQueryString[1];
+            $objFuncionalidade->page = isset($arrayQueryString[1]) ? $arrayQueryString[1] : 'index';
             return $objFuncionalidade;
         } else {
             return false;
