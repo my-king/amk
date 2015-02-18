@@ -22,14 +22,15 @@ class DatabaseLogic {
 
             if (isValid()) {
                 DatabaseLogic::addSistemaFromDatabase($_POST['projeto'], $_POST['repositorio'], $_POST['path']);
-                RedirectorHelper::addUrlParameter('cad', 'ok');
+                SessionHelper::setSession('cad_sucesso', 'true');
                 RedirectorHelper::goToController('Administrator');
             } else {
-                RedirectorHelper::addUrlParameter('cad', 'error');
+                SessionHelper::setSession('cad_error', 'false');
                 RedirectorHelper::goToController('Administrator');
             }
+            
         } else {
-            RedirectorHelper::addUrlParameter('cad', 'error');
+            SessionHelper::setSession('cad_error', 'false');
             RedirectorHelper::goToController('Administrator');
         }
     }
