@@ -4,7 +4,7 @@ class SecurityLogic {
 
     public function logar($requisitante, $params) {
 
-        $xml = simplexml_load_file(PATH_BASE_XML);
+        $xml = simplexml_load_file(DB_PROJETOS);
         $objXmlSistema = $xml->sistema;
         $tSistema = count($objXmlSistema);
         $sistema = (!CurrentUrlHelper::isParam('sistema')) ? $_POST['sistema'] : CurrentUrlHelper::getParam('sistema');

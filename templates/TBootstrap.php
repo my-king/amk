@@ -40,7 +40,6 @@ class TBootstrap extends Controller {
         $this->HTML->addJavaScript(PATH_JS_CORE_URL . 'core.js', true); // 3 a entrar
         $this->HTML->addJavaScript(PATH_TEMPLATE_JS_URL . 'bootstrap.min.js', true); // 2 a entrar
         $this->HTML->addJavaScript(PATH_TEMPLATE_JS_URL . "jquery.min.js", true); //1 a entrar
-
         //$this->HTML->addCss(PATH_TEMPLATE_CSS_URL . "bootstrap-theme.min.css", true); //2 entrar
         $this->HTML->addCss(PATH_TEMPLATE_CSS_URL . "bootstrap.min.css", true); //1 entrar
     }
@@ -50,8 +49,16 @@ class TBootstrap extends Controller {
         # Inicia o buffer
         ob_start();
 
-        # Incluir view no tamplate 
+        # Menu
+        $this->viewCore('navbar_administrator');
+
+        # Conteudo
+        echo '<div class="container">';
         $this->view($nome);
+        echo '</div>';
+
+        # Rodapé
+        $this->viewCore('footer_administrator');
 
         # Pegar view e aloca numa variavel
         $content = ob_get_clean();

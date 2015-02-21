@@ -77,7 +77,6 @@ class Path {
         define('PATH_SYSTEM', PATH . "system/");
         define('PATH_APP', PATH . APP);
         define('PATH_PUBLIC', PATH . "public/");
-        define('PATH_BASE_XML', PATH_SYSTEM . "config/" . $config['base_xml']['file']);
         define('PATH_LOG_ORM', PATH_SYSTEM . "orm/" .
                 $config['log_orm']['root'] . "/" .
                 $config['log_orm']['arquivo']
@@ -93,11 +92,13 @@ class Path {
         define('PATH_CSS_URL', PATH_WEBFILES_URL . "css/");
         define('PATH_CSS_CORE_URL', PATH_CSS_URL . "core/");
 
-        // VERSION
+        /* database xml */
+        define('DB_PROJETOS', PATH_SYSTEM . "db_xml/" . $config['base_xml']['projetos']);
+        define('DB_PERSISTENCIA', PATH_SYSTEM . "db_xml/" . $config['base_xml']['persistencia']);
+        
+        /* VERSION */
         define('VERSAO', $config['versionamento']['versao']);
 
-        // MPDF
-        define('MPDF', "../lib/MPDF56/mpdf.php");
     }
 
 }

@@ -1,21 +1,4 @@
-$(document).ready(function () {
-    //buttonSalvarDisabled();
-});
-
-/* Habilitar um button */
-function buttonSalvarEnabled() {
-    $('#salvar').removeAttr("class");
-    $('#salvar').attr("class", "btn btn-primary");
-    $('#salvar').removeAttr("disabled");
-}
-
-/* Desabilitar um button */
-function buttonSalvarDisabled() {
-    $('#salvar').removeAttr("class");
-    $('#salvar').attr("class", "btn disabled");
-    $('#salvar').attr("disabled", "disabled");
-}
-
+$(document).ready(function(){});
 function excluirProjeto(name) {
     if (confirm('Confirme para excluir o projeto.')) {
         var result = AjaxPost({objeto: "Database", method: "ExcluirSistemaFromDatabase", name: name});

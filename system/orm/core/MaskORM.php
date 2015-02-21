@@ -55,15 +55,6 @@ abstract class MaskORM {
 
     }
     
-    public static function numeroAjuste($numero){
-        
-        if($numero !== null){
-            return MaskORM::getMask('####/####', $numero);
-        }
-        
-        return null;
-    }
-    
     public static function telefone($telefone){
         
         if($telefone !== null){
@@ -109,15 +100,6 @@ abstract class MaskORM {
         return null;
     }
 
-    public static function codigoFonteRecurso($codigoFonteRecurso){
-        
-        if($codigoFonteRecurso !== null){
-            return MaskORM::getMask('#.###.######', $codigoFonteRecurso);
-        }
-        
-        return null;
-    }
-
     public static function hora($hora){
         
         if($hora !== null){
@@ -146,5 +128,3 @@ abstract class MaskORM {
     }
     
 }
-
-?>

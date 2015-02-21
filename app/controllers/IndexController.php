@@ -8,7 +8,7 @@ class IndexController extends TMetroUI {
 
     public function logon() {
         
-        if(!DatabaseLogic::isDatabase()){
+        if(!ProjetoDatabaseHelper::isDatabase()){
             RedirectorHelper::goToController('Administrator');
         }
         
@@ -19,9 +19,8 @@ class IndexController extends TMetroUI {
         $this->HTML->addJavaScript(PATH_JS_CORE_URL . "jquery.validate.js");
         $this->HTML->addJavaScript(PATH_JS_URL . $this->_controller . "/" . $this->_action . ".js");
 
-        $objDatabaseLogic = new DatabaseLogic();
-        $objDatabaseLogic->listSistemas();
-        $this->addDados('listSistemas', TFormHelper::optionSelectObject($objDatabaseLogic->listSistemas(), 'id', 'nome'));
+        /* Adicionar lista de sistemas a pagina */
+        $this->addDados('listSistemas', TFormHelper::optionSelectObject(ProjetoDatabaseHelper::listSistemas(), 'id', 'nome'));
                 
         # Startar Template
         $this->TStart("logon");

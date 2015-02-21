@@ -51,7 +51,7 @@
                     <li class="divider"></li>
                     <li class="disabled" ><a style="color: black;font-weight: bold;">:: SISTEMAS ::</a></li>
                     <li class="divider"></li>
-                    <?php foreach (DatabaseLogic::listPermitSistema() as $objSistema): ?>
+                    <?php foreach (ProjetoDatabaseHelper::listPermitSistema() as $objSistema): ?>
                     <?php $href = (SecurityHelper::getInstancia()->getSistema()->getNome() !== $objSistema->nome) ? 'href="'.UrlRequestHelper::mountUrlPost('Security','logar',array('sistema' => $objSistema->id)).'" ' : 'style="background: black;color: white;" '; ?>
                     <li><a <?php echo $href; unset($href); ?>><?php echo $objSistema->nome; ?></a></li>
                     <?php endforeach; ?>

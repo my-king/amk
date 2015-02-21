@@ -1,0 +1,88 @@
+<div class="page-header">
+    <h1>Persistencias</h1>
+</div>
+
+<?php if (SessionHelper::getSession('cad_sucesso')): ?>
+    <?php SessionHelper::deleteSession('cad_sucesso'); ?>
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+        <span class="sr-only">Sucesso:</span>
+        Persistência cadastrada com sucesso.
+    </div>
+<?php endif; ?>
+
+<?php if (SessionHelper::getSession('cad_error')): ?>
+    <?php SessionHelper::deleteSession('cad_error'); ?>
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Persistência já existe ou dados invalidos, tente novamente.
+    </div>
+<?php endif; ?>
+
+<p class="lead">Adicione <code>Persistencias</code> ao <code>AMK</code> para serem gerenciadas.</p>
+
+<form class="form-inline" id="cadSistema" role="form" action="<?php echo UrlRequestHelper::mountUrlPost('Database', 'salvarPersistencia'); ?>" method="post">
+    <div class="form-group" style="margin-right: 2em;">
+        <label for="persistencia">Nome:</label>
+        <input type="text" name="persistencia" class="form-control" id="persistencia" placeholder="Nome da Persistência" maxlength="20" style="width: 25em;" required>
+    </div>
+    <div class="form-group" style="margin-right: 2em;">
+        <label for="alias">Alias:</label>
+        <input type="text" name="alias" class="form-control" id="alias" placeholder="Informe um alias caso necessite" maxlength="20" style="width: 32em;">
+    </div>
+    <div class="checkbox" style="margin-right: 2em;">
+        <label class="checkbox-inline"><input type="checkbox" name="mask" value="YES" id="mask"> Mask</label>
+    </div>
+    <button type="submit" class="btn btn-primary" id="salvar">Salvar</button>
+</form>
+<br /><br />
+
+<p class="lead">Persistencias gerenciadas pelo <code>AMK</code>.</p>
+
+<?php if ($view_isDatabase): ?>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Persistência</th>
+                <th>Alias</th>
+                <th>Mask</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody class="listPersistencia">
+            <?php foreach ($view_database as $persistencia): ?>
+                <tr id="ref_<?php echo $persistencia->attributes()->name; ?>">
+                    <td><?php echo $persistencia->attributes()->name; ?></td>
+                    <td><?php echo $persistencia->attributes()->alias; ?></td>
+                    <td><?php echo (isset($persistencia->attributes()->mask)) ? '<span class="label label-success">SIM</span>' : '<span class="label label-danger">Não</span>' ; ?></td>
+                    <td>
+                        <button type="button" <?php echo (!isset($persistencia->attributes()->core)) ? 'class="btn btn-danger btn-sm" onclick="excluirPersistencia(\''. $persistencia->attributes()->name .'\')"' : 'class="btn btn-disabled btn-sm" disabled'; ?>>
+                            <?php if(!isset($persistencia->attributes()->core)): ?>
+                                <span class="glyphicon glyphicon-remove"></span> Excluir
+                            <?php else: ?>
+                                <span class="glyphicon glyphicon-ban-circle"></span> Excluir
+                            <?php endif; ?>
+                        </button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-parent="#accordion">Lista vazia</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body"><code>Não existe persistencias adicionadas ao AMK.</code></div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<br />
+
+<p>Retorne a <a href="index.php?Principal">página inicial</a>.</p>

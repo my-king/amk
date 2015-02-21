@@ -131,66 +131,6 @@ class PersistenceORM {
         return PersistenceORM::getErro();
     }
 
-    public static function numeroAjuste($persistence, $value) {
-        
-        # Se existe $persistence->NotNull
-        if (isset($persistence->NotNull)) {
-            if (!ValidateORM::notNull($value)) {
-                PersistenceORM::$erro[] = "Campo não pode ser nulo!!!";
-            }
-        }
-
-        # Campo não é nulo
-        if (ValidateORM::notNull($value)) {
-
-            # Limpa a string
-            $value = FormatORM::clearString($value);
-
-            # Atribuir string a variavel static $value
-            PersistenceORM::$value = $value;
-
-            # Se existe $persistence->size
-            if (isset($persistence->size)) {
-                if (!ValidateORM::size($value, $persistence->size)) {
-                    PersistenceORM::$erro[] = "Total de caracteres tem que ser igual a {$persistence->size}!!!";
-                }
-            }
-        }
-
-        return PersistenceORM::getErro();
-        
-    }
-    
-    public static function codigoFonteRecurso($persistence, $value) {
-        
-        # Se existe $persistence->NotNull
-        if (isset($persistence->NotNull)) {
-            if (!ValidateORM::notNull($value)) {
-                PersistenceORM::$erro[] = "Campo não pode ser nulo!!!";
-            }
-        }
-
-        # Campo não é nulo
-        if (ValidateORM::notNull($value)) {
-
-            # Limpa a string
-            $value = FormatORM::clearString($value);
-
-            # Atribuir string a variavel static $value
-            PersistenceORM::$value = $value;
-
-            # Se existe $persistence->size
-            if (isset($persistence->size)) {
-                if (!ValidateORM::size($value, $persistence->size)) {
-                    PersistenceORM::$erro[] = "Total de caracteres tem que ser igual a {$persistence->size}!!!";
-                }
-            }
-        }
-
-        return PersistenceORM::getErro();
-        
-    }    
-
     /**
      * Faz a persistencia de campos do tipo monetario
      * @tutorial PersistenceORM::monetario($ObjPersistence, "999.999.999.999,99");
@@ -732,5 +672,3 @@ class PersistenceORM {
     }    
     
 }
-
-?>

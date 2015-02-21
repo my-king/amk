@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<persistencias>
+    <persistencia name="Serial" alias="Serial" core="true"/>
+    <persistencia name="texto" alias="Texto" core="true"/>
+    <persistencia name="inteiro" alias="Inteiro" core="true"/>
+    <persistencia name="monetario" alias="Monetario" mask="true" core="true"/>
+    <persistencia name="cpf" alias="CPF" mask="true" core="true"/>
+    <persistencia name="cnpj" alias="CNPJ" mask="true" core="true"/>
+    <persistencia name="cep" alias="CEP" mask="true" core="true"/>
+    <persistencia name="data" alias="Data" mask="true" core="true"/>
+    <persistencia name="hora" alias="Hora" mask="true" core="true"/>
+    <persistencia name="telefone" alias="Telefone" mask="true" core="true"/>
+    <persistencia name="email" alias="E-mail" core="true"/>
+    <persistencia name="senha" alias="Senha" core="true"/>
+</persistencias>

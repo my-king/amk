@@ -9,7 +9,7 @@ class EntityHelper {
     private $ManyToMany;
 
     public function __construct($class = null) {
-        if($class !== null){
+        if ($class !== null) {
             $this->reflection = new ReflectionORM($class);
             $this->propAtributos = $this->reflection->getPropAtributos();
             $this->colmaps = $this->reflection->getAtributosFromColmap();
@@ -50,7 +50,6 @@ class EntityHelper {
         return $arrayColmap;
     }
 
-    
     private function getOneToOne(&$propriedades) {
         if (isset($propriedades['OneToOne']['objeto'])) {
             return $propriedades['OneToOne']['objeto'];
@@ -71,29 +70,29 @@ class EntityHelper {
                 unset($OneToMany);
             }
         }
-        
+
         return $arrayOneToMany;
     }
 
     public function getManyToMany() {
         $arrayManyToMany = array();
         $listManyToMany = $this->reflection->getManyToMany();
-        
+
         if (isset($listManyToMany[0])) {
             foreach ($listManyToMany as $key => $atributo) {
                 $ManyToMany = $this->propAtributos[$atributo]['ManyToMany'];
                 $arrayManyToMany[$key]['atributo'] = $atributo;
                 $arrayManyToMany[$key]['objeto'] = $ManyToMany['objeto'];
                 $arrayManyToMany[$key]['coluna'] = ( isset($ManyToMany['coluna']) ) ? $ManyToMany['coluna'] : '';
-                $arrayManyToMany[$key]['schema'] = ( isset($ManyToMany['schema']) ) ? $ManyToMany['schema'] : '' ;
+                $arrayManyToMany[$key]['schema'] = ( isset($ManyToMany['schema']) ) ? $ManyToMany['schema'] : '';
                 $arrayManyToMany[$key]['table'] = $ManyToMany['table'];
                 unset($ManyToMany);
             }
         }
-        
+
         return $arrayManyToMany;
     }
-    
+
     private function getType(&$propriedades) {
         if (isset($propriedades['Serial'])) {
             return 'Serial';
@@ -153,7 +152,7 @@ class EntityHelper {
 
     private function mountOption($array, $selected = '') {
         $optionHtml = '';
-        foreach ($array as $key => $option) {
+        foreach ($array as $option) {
             $isSelected = ($selected === $option['value']) ? "selected=''" : '';
             $optionHtml .= "<option value='{$option['value']}' {$isSelected} >{$option['descricao']}</option>";
         }
@@ -161,48 +160,37 @@ class EntityHelper {
         return $optionHtml;
     }
 
+    private function mountArrayType(&$arrayType) {
+        $arrayType = array_merge($arrayType,PersistenciaDatabaseHelper::listSelectArrayPersistence());
+    }
+
     public function selectType($selected = '') {
 
-        $arrayType = array(
-            0 => array('value' => '', 'descricao' => ''),
-            1 => array('value' => 'Serial', 'descricao' => 'Serial'),
-            2 => array('value' => 'inteiro', 'descricao' => 'Inteiro'),
-            3 => array('value' => 'monetario', 'descricao' => 'Monetario'),
-            4 => array('value' => 'decimal', 'descricao' => 'Decimal'),
-            5 => array('value' => 'data', 'descricao' => 'Data'),
-            6 => array('value' => 'hora', 'descricao' => 'Hora'),
-            7 => array('value' => 'texto', 'descricao' => 'Texto'),
-            8 => array('value' => 'email', 'descricao' => 'E-mail'),
-            9 => array('value' => 'senha', 'descricao' => 'Senha'),
-            10 => array('value' => 'cpf', 'descricao' => 'CPF'),
-            11 => array('value' => 'cnpj', 'descricao' => 'CNPJ'),
-            12 => array('value' => 'telefone', 'descricao' => 'Telefone'),
-            13 => array('value' => 'cep', 'descricao' => 'CEP')
-        );
+        $arrayType = array();
+        $arrayType[] = array('value' => '', 'descricao' => '');
+        $this->mountArrayType($arrayType);
 
         return $this->mountOption($arrayType, $selected);
     }
-
+    
+    private function mountArrayMask(&$arrayMask) {
+        $arrayMask = array_merge($arrayMask,PersistenciaDatabaseHelper::listSelectArrayMask());
+    }
+    
     public function selectMask($selected = '') {
 
-        $arrayMask = array(
-            0 => array('value' => '', 'descricao' => 'S/Mascara'),
-            1 => array('value' => 'cpf', 'descricao' => 'CPF'),
-            2 => array('value' => 'cnpj', 'descricao' => 'CNPJ'),
-            3 => array('value' => 'data', 'descricao' => 'Data'),
-            4 => array('value' => 'hora', 'descricao' => 'Hora'),
-            5 => array('value' => 'telefone', 'descricao' => 'Telefone'),
-            6 => array('value' => 'monetario', 'descricao' => 'Monetario')
-        );
+        $arrayMask = array();
+        $arrayMask[] = array('value' => '', 'descricao' => 'S/Mascara');
+        $this->mountArrayMask($arrayMask);
 
         return $this->mountOption($arrayMask, $selected);
     }
 
     public function selectNotNull($selected = '') {
-        $arrayNotNull = array(
-            0 => array('value' => 'YES', 'descricao' => 'NotNull ( false )'),
-            1 => array('value' => 'NO', 'descricao' => 'NotNull ( true )')
-        );
+
+        $arrayNotNull = array();
+        $arrayNotNull[] = array('value' => 'YES', 'descricao' => 'NotNull ( false )');
+        $arrayNotNull[] = array('value' => 'NO', 'descricao' => 'NotNull ( true )');
 
         return $this->mountOption($arrayNotNull, $selected);
     }
