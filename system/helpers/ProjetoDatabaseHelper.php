@@ -13,18 +13,14 @@ class ProjetoDatabaseHelper {
     }
 
     public static function getDatabase() {
-        if (ProjetoDatabaseHelper::isDatabase()) {
-            return simplexml_load_file(DB_PROJETOS);
-        } else {
-            return false;
-        }
+        return simplexml_load_file(DB_PROJETOS);
     }
 
     public static function addSistemaFromDatabase($name, $repositorio, $path_repositorio) {
-        $xml = ProjetoDatabaseHelper::getDatabase();
-        if (!$xml) {
+        if (!is_file(DB_PROJETOS)) {
             return false;
         } else {
+            $xml = ProjetoDatabaseHelper::getDatabase();
             $sistema = $xml->addChild('sistema');
             $sistema->addAttribute('name', $name);
             $sistema->addAttribute('repositorio', $repositorio);
@@ -82,7 +78,7 @@ class ProjetoDatabaseHelper {
                 $arraySistemas[] = $obj;
                 unset($obj);
             }
-            return $arraySistemas;            
+            return $arraySistemas;
         }
     }
 
