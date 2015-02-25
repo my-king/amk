@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <basexml>
     
-</basexml>
+<sistema name="INTEGRA" repositorio="pessoalrh"><path>/var/www/integra/</path></sistema></basexml>

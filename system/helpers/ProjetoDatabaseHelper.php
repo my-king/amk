@@ -24,7 +24,11 @@ class ProjetoDatabaseHelper {
             $sistema = $xml->addChild('sistema');
             $sistema->addAttribute('name', $name);
             $sistema->addAttribute('repositorio', $repositorio);
-            $sistema->addChild('path', $path_repositorio);
+            if (ProjetoDatabaseHelper::isBarra($path_repositorio)) {
+                $sistema->addChild('path', $path_repositorio);
+            } else {
+                $sistema->addChild('path', $path_repositorio.'/');
+            }
             $xml->asXML(DB_PROJETOS);
             return true;
         }
@@ -93,6 +97,14 @@ class ProjetoDatabaseHelper {
             unset($obj);
         }
         return $arraySistemas;
+    }
+
+    public static function isBarra($path) {
+        if (substr($path, strlen($path) - 1) === "/") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

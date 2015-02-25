@@ -12,4 +12,4 @@
     <persistencia name="telefone" alias="Telefone" mask="true" core="true"/>
     <persistencia name="email" alias="E-mail" core="true"/>
     <persistencia name="senha" alias="Senha" core="true"/>
-</persistencias>
+<persistencia name="numeroAjuste" alias="NumeroAjuste" mask="true"/><persistencia name="elementoDespesa" alias="ElementoDespesa" mask="true"/></persistencias>

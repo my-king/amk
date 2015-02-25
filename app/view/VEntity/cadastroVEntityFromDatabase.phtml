@@ -65,7 +65,7 @@
         <div class="row">
             <div class="span12">
                 <div class="input-control text" data-role="input-control">
-                    <input type="text" name="objeto" id="objeto" minlength="3" maxlength="40" required="" placeholder="Digite o nome do objeto" />
+                    <input type="text" name="objeto" id="objeto" minlength="3" maxlength="40" required="" value="<?php echo 'V'.ucfirst(FormatHelper::getAtributoSugerido($view_dados['table']));?>" placeholder="Digite o nome do objeto" />
                     <button class="btn-clear" tabindex="-1" type="button"></button>
                 </div>
             </div>
@@ -175,7 +175,7 @@
                         <div class="span4">
                             <h2>Atributo <b class="fg-red">*</b></h2>
                             <div class="input-control text" data-role="input-control">
-                                <input type="text" name="dados[<?php echo $key; ?>][atributo]" id="atributo_<?php echo $key; ?>" placeholder="Nome do Atributo" required=""/>
+                                <input type="text" name="dados[<?php echo $key; ?>][atributo]" id="atributo_<?php echo $key; ?>" placeholder="Nome do Atributo" value="<?php echo FormatHelper::getAtributoSugerido($objColmap->colmap); ?>" required=""/>
                                 <button class="btn-clear" tabindex="-1" type="button"></button>
                             </div>
                         </div>
