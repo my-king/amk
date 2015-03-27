@@ -193,6 +193,16 @@ function Minusculo(campo)
     });
 }
 
+function PrimeiraLetraMaiuscula(campo) {
+    $(campo).keyup(function() {
+        var texto = $(campo).val();
+        texto = texto.replace(/([^A-zÀ-ú]?)([A-zÀ-ú]+)/g, function(match, separator, word) {
+            return separator + word.charAt(0).toUpperCase() + word.slice(1);
+        });
+        $(campo).val(texto);
+    });
+}
+
 function replaceAll(str, de, para) {
     var pos = str.indexOf(de);
     while (pos > -1) {
